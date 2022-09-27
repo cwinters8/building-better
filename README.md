@@ -37,6 +37,8 @@ This course will be continuously evolving as needed, and is considered to be a w
 
 Simple is better than complex for most cases.
 
+[Perfection is the enemy of good](https://en.wikipedia.org/wiki/Perfect_is_the_enemy_of_good).
+
 ## Incomplete glossary
 
 ### Web bloat
