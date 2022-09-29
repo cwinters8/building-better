@@ -1,3 +1,6 @@
 tasks:
   - name: Open lesson directory
-    command: gp open ./lesson-0
+    command: gp ports await 23000 && gp open ./lesson-0
+vscode:
+  extensions:
+    - golang.go
