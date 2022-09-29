@@ -1,3 +1,6 @@
 {
-  "go.inferGopath": false
+  "go.inferGopath": false,
+  "gopls": {
+    "ui.semanticTokens": true, // experimenting with this
+  }
 }

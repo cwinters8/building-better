@@ -1,0 +1,17 @@
+{
+    "builtInExtensions": [
+        {
+            "golang.Go": {
+                "name": "Go",
+                "languages": [
+                    "go"
+                ],
+                "pattern": "**/*.go"
+            }
+        }
+    ],
+    "extensionsGallery": {
+        "serviceUrl": "https://open-vsx.org/vscode/gallery",
+        "itemUrl": "https://open-vsx.org/vscode/item"
+    }
+}

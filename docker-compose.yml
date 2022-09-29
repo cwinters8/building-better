@@ -1,0 +1,9 @@
+services:
+  vscode:
+    build: ./vscode
+    ports:
+      - target: 3000
+        # published should be 443 when deployed
+        published: 8080 
+        protocol: tcp
+    init: true
