@@ -1,18 +1,19 @@
 FROM gitpod/openvscode-server:latest
 
 ARG GOVERSION=1.19.1
-ARG GOVSCODEEXTVERSION=0.35.2
+ARG GOEXTVERSION=0.35.2
+ARG PRETTIEREXTVERSION=9.9.0
 
 # to get permissions to install packages and such
 USER root
 
+# the installation process for software needed
 RUN apt-get update && apt-get -y install zip
 
 USER openvscode-server
 
-# the installation process for software needed
 ENV GOVERSION=${GOVERSION}
-ENV GOVSCODEEXTVERSION=${GOVSCODEEXTVERSION}
+ENV GOEXTVERSION=${GOEXTVERSION}
 ENV GOPATH=$HOME/go-packages
 ENV GOROOT=$HOME/go
 ENV PATH=$GOROOT/bin:$GOPATH/bin:$PATH
@@ -32,7 +33,18 @@ ENV GOPATH=/workspace/go \
     PATH=/workspace/go/bin:$PATH
 
 # extensions
-ENV EXTDIR=$HOME/.openvscode-server/extensions/golang.go
-RUN wget -O go.vsix https://github.com/golang/vscode-go/releases/download/v${GOVSCODEEXTVERSION}/go-${GOVSCODEEXTVERSION}.vsix
-RUN mkdir -p ${EXTDIR}
-RUN unzip go.vsix "extension/*" -d ./ && mv extension/* ${EXTDIR}/
+ENV EXTDIR=$HOME/.openvscode-server/extensions
+ENV GODIR=${EXTDIR}/golang.go
+RUN wget -O go.vsix https://github.com/golang/vscode-go/releases/download/v${GOEXTVERSION}/go-${GOEXTVERSION}.vsix
+RUN mkdir -p ${GODIR} && unzip go.vsix "extension/*" -d ./ && mv extension/* ${GODIR}/
+ENV PRETTIERDIR=${EXTDIR}/prettier
+RUN wget -O prettier.vsix https://github.com/prettier/prettier-vscode/releases/download/v${PRETTIEREXTVERSION}/prettier-vscode-${PRETTIEREXTVERSION}.vsix
+RUN mkdir -p ${PRETTIERDIR} && unzip prettier.vsix "extension/*" -d ./ && mv extension/* ${PRETTIERDIR}/
+
+WORKDIR $HOME
+
+# load lesson content from lessons repo (TODO: move lesson content into a gh repo)
+
+ENV CONNECTION_TOKEN=default
+ENV OPENVSCODE_SERVER_ROOT="/home/.openvscode-server"
+ENTRYPOINT [ "/bin/sh", "-c", "exec ${OPENVSCODE_SERVER_ROOT}/bin/openvscode-server --host 0.0.0.0 --connection-token ${CONNECTION_TOKEN} \"${@}\"", "--" ]

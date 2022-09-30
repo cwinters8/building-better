@@ -7,3 +7,4 @@ services:
         published: 8080 
         protocol: tcp
     init: true
+    command: --connection-token ${CONNECTION_TOKEN}

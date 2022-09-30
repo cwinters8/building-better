@@ -1,6 +1,41 @@
 {
   "go.inferGopath": false,
   "gopls": {
-    "ui.semanticTokens": true, // experimenting with this
-  }
+    "ui.semanticTokens": true // experimenting with this
+  },
+  "workbench.iconTheme": "material-icon-theme",
+  "material-icon-theme.files.associations": {
+    "*.go": "go_gopher"
+  },
+  "workbench.startupEditor": "none",
+  "workbench.colorTheme": "Default Dark+",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.formatOnSave": true,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "files.associations": {
+    "*.html": "html"
+  },
+  "editor.stickyScroll.enabled": true
 }
